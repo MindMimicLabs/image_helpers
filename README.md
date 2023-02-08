@@ -16,6 +16,12 @@ This project aims to create digital snapshots of that experience both in black-a
 4. Save the images as a PNG
 5. Repeat
 
+**Options**
+
+* _~/generate_color_YIQ.py_ works as described above
+* _~/generate_bw_YIQ.py_ forces the I and Q channels to 0 creating a black-and-white image
+* _~/generate_color_RGB.py_ creates random values for RGB directly
+
 # Discussion
 
 The color space computers generally use is RGB.
