@@ -18,9 +18,8 @@ This project aims to create digital snapshots of that experience both in black-a
 
 **Options**
 
-* _~/generate_color_YIQ.py_ works as described above
-* _~/generate_bw_YIQ.py_ forces the I and Q channels to 0 creating a black-and-white image
-* _~/generate_color_RGB.py_ creates random values for RGB directly
+* _~/generate_YIQ.py_ works as described above
+* _~/generate_RGB.py_ creates random values for RGB directly
 
 # Discussion
 
