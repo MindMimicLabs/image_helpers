@@ -3,6 +3,7 @@
 # Pixel values in PIL work in the range [0, 255]. 
 # colorsys does not allow for rgb => yiq => rgb in PIL's range.
 # the math is based on the formulas found [here](https://en.wikipedia.org/wiki/YIQ)
+# NOTE: the clamp in `yiq_to_rgb` this is defined in the [standard ](https://en.wikipedia.org/wiki/YUV)
 import typing as t
 
 def rgb_to_yiq(rgb: t.Tuple[int, int, int]) -> t.Tuple[float, float, float]:
@@ -12,7 +13,7 @@ def rgb_to_yiq(rgb: t.Tuple[int, int, int]) -> t.Tuple[float, float, float]:
     return (y, i, q)
 
 def yiq_to_rgb(yiq: t.Tuple[float, float, float]) -> t.Tuple[int, int, int]:
-    r = round(1 * yiq[0] + 0.956 * yiq[1] + 0.619 * yiq[2])
-    g = round(1 * yiq[0] - 0.272 * yiq[1] - 0.647 * yiq[2])
-    b = round(1 * yiq[0] - 1.106 * yiq[1] + 1.703 * yiq[2])
+    r = round(max(0, min(255, 1 * yiq[0] + 0.956 * yiq[1] + 0.619 * yiq[2])))
+    g = round(max(0, min(255, 1 * yiq[0] - 0.272 * yiq[1] - 0.647 * yiq[2])))
+    b = round(max(0, min(255, 1 * yiq[0] - 1.106 * yiq[1] + 1.703 * yiq[2])))
     return (r, g, b)

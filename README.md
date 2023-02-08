@@ -39,3 +39,4 @@ Look at the different files in _~/analysis_ for implications.
    * The RGB space is [0, 255]
    * The RGB space [0, 255] x [0, 255] x [0, 255] converts to the YIQ space [0, 255] x [-151.9545, 151.9545] x [-133.2885, 133.2885]
    * 100 % of the space is perfectly reversible
+3. Thanks to [clamping](https://en.wikipedia.org/wiki/Clamping_(graphics)) 100 % of the YIQ space is addressable as RGB
