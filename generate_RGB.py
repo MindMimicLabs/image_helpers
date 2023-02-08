@@ -36,7 +36,7 @@ def generate_static(img: Image.Image, color: bool) -> None:
             img.putpixel((w, h), (r, g, b))
 
 # display settings
-print(f'--- {n} {w}x{h} {color_text} images from RGB (seed {seed})---')
+print(f'--- {n} {w}x{h} {color_text} images from RGB (seed {seed}) ---')
 
 # run the loop
 random.seed(seed)

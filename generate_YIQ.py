@@ -38,7 +38,7 @@ def generate_static(img: Image.Image, color: bool) -> None:
             img.putpixel((w, h), rgb)
 
 # display settings
-print(f'--- {n} {w}x{h} {color_text} images from YIQ (seed {seed})---')
+print(f'--- {n} {w}x{h} {color_text} images from YIQ (seed {seed}) ---')
 
 # run the loop
 random.seed(seed)
