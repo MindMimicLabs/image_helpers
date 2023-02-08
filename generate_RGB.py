@@ -1,38 +1,45 @@
 import pathlib
 import progressbar as pb # type: ignore
+import random
 import shutil
 from PIL import Image
-from random import randint, seed
 
 # the size and count of the images
 w = 480
 h = 320
 n = 50000
 color = True
+seed = 0
 
 # the location to save the images
-path = pathlib.Path(__file__).parent.joinpath(f"images/{'color' if color else 'bw'}/rgb")
+color_text = 'color' if color else 'bw'
+path = pathlib.Path(__file__).parent.joinpath(f"images/{color_text}/rgb")
 
 # setup folder
 if path.exists():
     shutil.rmtree(path)
 path.mkdir(parents = True)
 
+# fill the image with static
 def generate_static(img: Image.Image, color: bool) -> None:
     r_rng = [0, 255]
     g_rng = [0, 255]
     b_rng = [0, 255]
     for w in range(img.width):
         for h in range(img.height):
-            r = randint(r_rng[0], r_rng[1])
+            r = random.randint(r_rng[0], r_rng[1])
             if color:
-                g = randint(g_rng[0], g_rng[1])
-                b = randint(b_rng[0], b_rng[1])
+                g = random.randint(g_rng[0], g_rng[1])
+                b = random.randint(b_rng[0], b_rng[1])
             else:
                 g = b = r
             img.putpixel((w, h), (r, g, b))
 
-seed(0)
+# display settings
+print(f'--- {n} {w}x{h} {color_text} images from RGB (seed {seed})---')
+
+# run the loop
+random.seed(seed)
 widgets = ['Color RGB ', pb.Counter(), ' ', pb.Timer(), ' ', pb.BouncingBar(marker = '.', left = '[', right = ']')]
 with pb.ProgressBar(widgets = widgets) as bar:
     bar.update(0) # type: ignore
