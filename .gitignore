@@ -1,7 +1,3 @@
 # IDE
 *.bak
 .vscode
-__pycache__
-
-# Data
-/images
